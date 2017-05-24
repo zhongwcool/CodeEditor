@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.gst.tool.esp8266.ui.EditorActivity"
+    tools:showIn="@layout/activity_editor">
+
+    <RelativeLayout
+        android:id="@+id/hidden"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:padding="30dp">
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/empty"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/vector_open"
+            tools:ignore="MissingPrefix"/>
+
+        <TextView
+            android:id="@+id/loadingMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/empty"
+            android:layout_centerHorizontal="true"
+            android:padding="4dp"
+            android:textStyle="italic"
+            android:textSize="20sp"
+            android:text="Loading File..."/>
+    </RelativeLayout>
+
+    <com.gst.tool.esp8266.ui.component.InteractiveScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:layout_marginBottom="50dp">
+
+        <com.gst.tool.esp8266.ui.component.CodeEditText
+            android:id="@+id/fileContent"
+            android:text="Welcome to Kodis!"
+            android:background="@android:color/transparent"
+            android:focusable="false"
+            android:textSize="15sp"
+            android:textColor="@color/textColor"
+            android:imeOptions="flagNoExtractUi"
+            android:inputType="textVisiblePassword|textMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.gst.tool.esp8266.ui.component.InteractiveScrollView>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:layout_gravity="bottom">
+        <LinearLayout
+            android:id="@+id/symbolLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#dddddd"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:padding="10dp"
+                android:text="."/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:padding="10dp"
+                android:text="="/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:padding="10dp"
+                android:text="/"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:padding="10dp"
+                android:text="{"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:padding="10dp"
+                android:text="}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:padding="10dp"
+                android:text="("/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:padding="10dp"
+                android:text=")"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:padding="10dp"
+                android:text="*"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:padding="10dp"
+                android:text="["/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:padding="10dp"
+                android:text="]"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:padding="10dp"
+                android:text="\\"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:padding="10dp"
+                android:text="|"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:padding="10dp"
+                android:text="$"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:padding="10dp"
+                android:text="!"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:padding="10dp"
+                android:text="&quot;"/>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+</FrameLayout>
