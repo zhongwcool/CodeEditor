@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">CodeEditor</string>
+    <string name="app_name">Code Editor</string>
     <string name="action_settings">Settings</string>
     <string name="action_save">Save</string>
+    <string name="tips_save_or_not_after_change">File has been changed, Save or not?</string>
 </resources>

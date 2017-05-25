@@ -1,13 +1,16 @@
 package com.gst.tool.esp8266.ui;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -82,6 +85,33 @@ public class EditorActivity extends AppCompatActivity implements TextWatcher {
     }
 
     @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (isChanged()) {
+                AlertDialog alert = new AlertDialog.Builder(this)
+                        .setMessage(R.string.tips_save_or_not_after_change)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                save();
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                            }
+                        })
+                        .create();
+                alert.show();
+                return true;
+            }
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_edit, menu);
@@ -94,17 +124,21 @@ public class EditorActivity extends AppCompatActivity implements TextWatcher {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
+            case R.id.action_save: {
+                save();
+                return true;
+            }
             case R.id.action_undo: {
                 Toast.makeText(this, "These feature is developing.", Toast.LENGTH_SHORT).show();
-                return false;
+                return true;
             }
             case R.id.action_redo: {
                 Toast.makeText(this, "These feature is developing.", Toast.LENGTH_SHORT).show();
-                return false;
+                return true;
             }
             case R.id.action_publish: {
                 Toast.makeText(this, "These feature is developing.", Toast.LENGTH_SHORT).show();
-                return false;
+                return true;
             }
         }
 
@@ -233,7 +267,6 @@ public class EditorActivity extends AppCompatActivity implements TextWatcher {
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-
     }
 
     @Override
