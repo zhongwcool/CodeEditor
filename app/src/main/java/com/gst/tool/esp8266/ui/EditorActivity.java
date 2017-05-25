@@ -3,9 +3,9 @@ package com.gst.tool.esp8266.ui;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
@@ -52,6 +52,8 @@ public class EditorActivity extends AppCompatActivity implements TextWatcher {
         Intent intent = getIntent();
         file = (File) intent.getSerializableExtra(FILE_KEY);
 
+        getSupportActionBar().setTitle(getFileName());
+
         contentView = (CodeEditText) findViewById(R.id.fileContent);
         hidden = findViewById(R.id.hidden);
 
@@ -82,7 +84,7 @@ public class EditorActivity extends AppCompatActivity implements TextWatcher {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_edit, menu);
         return true;
     }
 
@@ -91,11 +93,19 @@ public class EditorActivity extends AppCompatActivity implements TextWatcher {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.action_undo: {
+                Toast.makeText(this, "These feature is developing.", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            case R.id.action_redo: {
+                Toast.makeText(this, "These feature is developing.", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            case R.id.action_publish: {
+                Toast.makeText(this, "These feature is developing.", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
 
         return super.onOptionsItemSelected(item);
